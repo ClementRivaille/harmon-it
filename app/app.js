@@ -1,17 +1,39 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Chord from '../lib/chord'
-import Note from '../lib/note'
+import { listNotes } from '../lib/keyboard'
+import ChordComponent from './components/chord.component.jsx'
+import NoteComponent from './components/note.component.jsx'
 
 class HarmonItApp extends React.Component {
 
+  constructor() {
+    super()
+    this.state = {
+      notes: listNotes(),
+      flat: false
+    }
+  }
+
   render() {
-    let noteC = new Note(3)
-    let cMinor = new Chord(noteC, true)
-    const listNotes = cMinor.getNotes().map(note => <li>{note.symbol}</li>)
+    const keyboardSet = this.state.notes.map(note =>
+      <li key={note.key}>
+        <NoteComponent note={note} onClick={() => this.setChord(note)} flat={this.state.flat}/>
+      </li>)
+    const resultDisplay = this.state.chord ? <ChordComponent chord={this.state.chord} flat={this.state.flat}/> : <div></div>
     return (
-      <ul>{listNotes}</ul>
+      <div>
+        <ul>
+          {keyboardSet}
+        </ul>
+        {resultDisplay}
+      </div>
     )
+  }
+
+  setChord(note) {
+    const chord = new Chord(note)
+    this.setState({chord: chord})
   }
 }
 
