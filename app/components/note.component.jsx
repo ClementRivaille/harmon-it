@@ -9,9 +9,19 @@ import React from 'react'
 export default class NoteComponent extends React.Component {
 
   render() {
+    const style = {
+      display: 'inline-block',
+      backgroundColor: '#37BC9B',
+      fontSize: this.props.keyboard ? '2vw' : '4vw',
+      width: this.props.keyboard ? '5vw' : '10vw',
+      height: '10vw',
+      margin: 10,
+      border: 'none'
+    }
+
     const callback = this.props.onClick || (() => {})
     return (
-      <button onClick={() => callback()}>
+      <button style={style} onClick={() => callback()}>
         {this.props.flat ? this.props.note.symbolFlat : this.props.note.symbol}
       </button>
     )

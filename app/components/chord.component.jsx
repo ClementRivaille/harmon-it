@@ -9,12 +9,22 @@ import NoteComponent from './note.component.jsx'
 export default class ChordComponent extends React.Component {
 
   render() {
+    const style = {
+      li: {
+        display: 'inline',
+        listStyleType: 'none'
+      },
+      display: 'flex',
+      justifyContent: 'center',
+      margin: 0
+    }
+
     const listNotes = this.props.chord.getNotes().map((note,index) =>
-      <li key={index}>
+      <li style={style.li} key={index}>
         <NoteComponent note={note} flat={this.props.flat}/>
       </li>)
     return (
-      <ul>
+      <ul style={style}>
         {listNotes}
       </ul>
     )
