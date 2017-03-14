@@ -11,7 +11,7 @@ export default class NoteComponent extends React.Component {
   render() {
     const style = {
       display: 'inline-block',
-      backgroundColor: '#37BC9B',
+      backgroundColor: 'white',
       fontSize: this.props.keyboard ? '2vw' : '4vw',
       width: this.props.keyboard ? '5vw' : '10vw',
       height: '10vw',

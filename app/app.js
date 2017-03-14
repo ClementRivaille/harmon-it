@@ -1,53 +1,41 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Chord from '../lib/chord'
-import { listNotes } from '../lib/keyboard'
+import KeyboardComponent from './components/keyboard.component.jsx'
 import ChordComponent from './components/chord.component.jsx'
-import NoteComponent from './components/note.component.jsx'
 
 class HarmonItApp extends React.Component {
 
   constructor() {
     super()
     this.state = {
-      notes: listNotes(),
       flat: false
     }
   }
 
   render() {
     const style = {
-      li: {
-        display: 'inline',
-        listStyleType: 'none'
-      },
-      notes: {
+      keyboard: {
         height: '50%',
-        backgroundColor: 'red',
-        display: 'flex',
-        justifyContent: 'center'
+        backgroundColor: '#96e6f8'
       },
       chord: {
         height: '50%',
-        backgroundColor: 'blue'
+        backgroundColor: '#5151a1'
       },
       width: '100%',
       height: '100%'
     }
 
-    const keyboardSet = this.state.notes.map(note =>
-      <li style={style.li} key={note.key}>
-        <NoteComponent keyboard={true} note={note} onClick={() => this.setChord(note)} flat={this.state.flat}/>
-      </li>)
     const resultDisplay = this.state.chord ? <ChordComponent chord={this.state.chord} flat={this.state.flat}/> : <div></div>
     return (
       <div style={style}>
-        <div style={style.notes}>
-          <ul>
-            {keyboardSet}
-          </ul>
+        <div style={style.keyboard}>
+          <KeyboardComponent selectNote={(note) => this.setChord(note)} flat={this.state.flat}/>
         </div>
-        <div style={style.chord}>{resultDisplay}</div>
+        <div style={style.chord}>
+          {resultDisplay}
+        </div>
       </div>
     )
   }
