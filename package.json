@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "browserify app/app.js -o bundle.js --debug --verbose -t [ babelify ]",
-    "watch": "watchify app/app.js -t babelify -o bundle.js --debug --verbose"
+    "watch": "watchify app/app.js -t babelify -o bundle.js --debug --verbose",
+    "lint": "eslint app lib"
   },
   "author": "Clément Rivaille",
   "license": "ISC",
@@ -20,6 +21,7 @@
     "eslint-config-standard-babel": "0.0.2",
     "eslint-plugin-babel": "^4.0.0",
     "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-react": "^6.10.0",
     "eslint-plugin-standard": "^2.0.1"
   },
   "dependencies": {

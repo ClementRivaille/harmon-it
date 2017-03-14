@@ -12,11 +12,13 @@
   },
   // To give you an idea how to override rule options:
   "rules": {
-    "space-before-function-paren": 0
+    "space-before-function-paren": 0,
+    "react/jsx-uses-vars": [2]
   },
   "parser": "babel-eslint",
   "extends": ["eslint:recommended", "standard", "standard-babel"],
   "plugins": [
+    "react",
     "babel",
     "standard"
   ]

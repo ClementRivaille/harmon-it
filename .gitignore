@@ -1,3 +1,4 @@
 node_modules
 bundle.js
 *.sublime-*
+npm-debug.log
