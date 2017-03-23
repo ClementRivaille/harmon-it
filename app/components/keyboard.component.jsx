@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import NoteComponent from './note.component.jsx'
 import { listNotes } from '../../lib/keyboard'
 
@@ -39,5 +39,10 @@ export default class KeyboardComponent extends React.Component {
         </div>
     )
   }
+
 }
 
+KeyboardComponent.propTypes = {
+  selectNote: PropTypes.func.isRequired,
+  flat: PropTypes.bool
+}

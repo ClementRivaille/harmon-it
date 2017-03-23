@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import NoteComponent from './note.component.jsx'
+import Chord from '../../lib/chord'
 
 /**
  * Properties:
@@ -19,7 +20,7 @@ export default class ChordComponent extends React.Component {
       margin: 0
     }
 
-    const listNotes = this.props.chord.getNotes().map((note,index) =>
+    const listNotes = this.props.chord.getNotes().map((note, index) =>
       <li style={style.li} key={index}>
         <NoteComponent note={note} flat={this.props.flat}/>
       </li>)
@@ -29,5 +30,10 @@ export default class ChordComponent extends React.Component {
       </ul>
     )
   }
+
 }
 
+ChordComponent.propTypes = {
+  chord: PropTypes.instanceOf(Chord),
+  flat: PropTypes.bool
+}

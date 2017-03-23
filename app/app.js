@@ -1,16 +1,18 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import Chord from '../lib/chord'
-import KeyboardComponent from './components/keyboard.component.jsx'
-import ChordComponent from './components/chord.component.jsx'
+import LinkedKeyboard from './components/containers/linked-keyboard.component'
+import LinkedChord from './components/containers/linked-chord.component'
 
-class HarmonItApp extends React.Component {
+export default class HarmonItApp extends React.Component {
 
-  constructor() {
-    super()
-    this.state = {
-      flat: false
-    }
+  constructor(props, context) {
+    super(props, context)
+
+    this.state = {}
+    this.context.store.subscribe(() => {
+      this.setState({
+        baseSelected: this.context.store.getState().chord.base !== undefined
+      })
+    })
   }
 
   render() {
@@ -27,26 +29,19 @@ class HarmonItApp extends React.Component {
       height: '100%'
     }
 
-    const resultDisplay = this.state.chord ? <ChordComponent chord={this.state.chord} flat={this.state.flat}/> : <div></div>
     return (
       <div style={style}>
         <div style={style.keyboard}>
-          <KeyboardComponent selectNote={(note) => this.setChord(note)} flat={this.state.flat}/>
+          <LinkedKeyboard />
         </div>
         <div style={style.chord}>
-          {resultDisplay}
+          {this.state.baseSelected ? <LinkedChord/> : <div></div>}
         </div>
       </div>
     )
   }
-
-  setChord(note) {
-    const chord = new Chord(note)
-    this.setState({chord: chord})
-  }
 }
 
-// Render to ID content in the DOM
-ReactDOM.render(< HarmonItApp / >,
-    document.getElementById('container')
-)
+HarmonItApp.contextTypes = {
+  store: React.PropTypes.object.isRequired
+}
