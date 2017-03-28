@@ -5,3 +5,7 @@ html, body, #container {
 body {
   margin: 0px;
 }
+
+.neutral.react-toggle .react-toggle-track {
+  background-color: #8c8c8c;
+}
