@@ -15,7 +15,7 @@ export default class OptionsComponent extends React.Component {
       },
       padding: '5px',
       fontFamily: 'sans',
-      fontSize: '0.8em',
+      fontSize: '0.8em'
     }
     return (
       <div style={style}>
@@ -28,7 +28,7 @@ export default class OptionsComponent extends React.Component {
             className="neutral" />
         </label>
       </div>
-      )
+    )
   }
 
 }

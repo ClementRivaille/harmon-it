@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import LinkedKeyboard from './components/containers/linked-keyboard.component'
 import LinkedChord from './components/containers/linked-chord.component'
 import LinkedOptions from './components/containers/linked-options.component'
+import LinkedChordSettings from './components/containers/linked-chord-settings.component'
 
 let HarmonitApp = (props) => {
   const style = {
@@ -39,6 +40,7 @@ let HarmonitApp = (props) => {
       </div>
       <div style={style.chord}>
         {props.baseSelected ? <LinkedChord/> : <div></div>}
+        <LinkedChordSettings/>
       </div>
     </div>
   )
