@@ -15,8 +15,6 @@ const chord = (state = {
       return Object.assign({}, state, {seventh: action.seventh, ninth: action.ninth})
     case 'SET_MODE':
       return Object.assign({}, state, {diminished: action.diminished, augmented: action.augmented})
-    case 'SET_DOMINANT':
-      return Object.assign({}, state, {dominant: action.dominant})
     default:
       return state
   }

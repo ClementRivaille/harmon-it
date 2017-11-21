@@ -13,17 +13,22 @@ let HarmonitApp = (props) => {
       fontFamily: 'sans'
     },
     options: {
+      float: 'right'
+    },
+    header: {
       position: 'absolute',
-      top: 0,
-      right: 0
+      width: '100%',
+      top: 0
     },
     keyboard: {
       height: '50%',
-      backgroundColor: '#96e6f8'
+      backgroundColor: '#96e6f8',
+      overflowY: 'auto'
     },
     chord: {
       height: '50%',
-      backgroundColor: '#5151a1'
+      backgroundColor: '#5151a1',
+      overflowY: 'auto'
     },
     width: '100%',
     height: '100%'
@@ -31,11 +36,13 @@ let HarmonitApp = (props) => {
 
   return (
     <div style={style}>
-      <div style={style.keyboard}>
+      <header style={style.header}>
         <h1 style={style.title}>Harmon'it</h1>
         <div style={style.options}>
           <LinkedOptions />
         </div>
+      </header>
+      <div style={style.keyboard}>
         <LinkedKeyboard />
       </div>
       <div style={style.chord}>

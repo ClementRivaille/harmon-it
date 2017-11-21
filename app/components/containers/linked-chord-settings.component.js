@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { setTone, addNotes, setMode, setDominant } from '../../actions'
+import { setTone, addNotes, setMode } from '../../actions'
 import ChordSettingsComponent from '../chord-settings.component.jsx'
 
 const mapStateToProps = (state) => {
@@ -18,9 +18,6 @@ const mapDispatchToProps = (dispatch) => {
     },
     setMode: (diminished, augmented) => {
       dispatch(setMode(diminished, augmented))
-    },
-    setDominant: (dominant) => {
-      dispatch(setDominant(dominant))
     }
   }
 }

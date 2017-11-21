@@ -10,25 +10,44 @@ export default class ChordSettingsComponent extends React.Component {
 
   render() {
     const style = {
+      padding: '10px',
+      width: '25%',
       display: 'grid',
-      gridTemplateColumns: '25%',
+      gridTemplateColumns: '33%',
       gridAutoFlow: 'column',
-      cell: {
-        gridColumn: 1
+      fontFamily: 'sans',
+      color: 'white',
+      toneCell: {
+        display: 'grid',
+        gridTemplateColumn: '50% 50%',
+
+        switch: {
+          button: {
+            transform: 'rotate(90deg) translateX(25%)'
+          },
+          gridColumn: '1 / 2',
+          gridRow: 1
+        },
+        values: {
+          gridColumn: 2,
+          grodRow: 1
+        }
       }
     }
     return (
       <div style={style}>
-        <div>
-          <label>
-            <span>Major</span>
-            <Toggle
-              checked={this.props.chord.minor}
-              onChange={(e) => this.props.setTone(e.target.checked)}
-              icons={false}
-              className="neutral" />
-            <span>Minor</span>
-          </label>
+        <div style={style.toneCell}>
+          <div style={style.toneCell.switch}>
+            <div style={style.toneCell.switch.button}>
+              <Toggle
+                checked={this.props.chord.minor}
+                onChange={(e) => this.props.setTone(e.target.checked)}
+                icons={false}
+                className="neutral" />
+              </div>
+          </div>
+          <label style={style.toneCell.values}>Major</label>
+          <label style={style.toneCell.values}>Minor</label>
         </div>
 
         <div>
@@ -46,17 +65,9 @@ export default class ChordSettingsComponent extends React.Component {
         </div>
 
         <div>
-          <label>
-            <input name="dominant" type="checkbox"
-            checked={this.props.chord.dominant}
-            onChange={(e) => this.props.setDominant(e.target.checked)}/> Dominant
-          </label>
-        </div>
-
-        <div>
           <select name="mode" value={this.readMode()} onChange={(e) => this.setMode(e.target.value)}>
-            <option value="">Mode</option>
-            <option value="diminished">Diminished</option>
+            <option value="">Perfect</option>
+            <option value="diminished">{ this.props.chord.minor ? 'Diminished' : 'Dominant'}</option>
             <option value="augmented">Augmented</option>
           </select>
         </div>
@@ -78,6 +89,5 @@ ChordSettingsComponent.propTypes = {
   chord: PropTypes.object.isRequired,
   setTone: PropTypes.func.isRequired,
   addNotes: PropTypes.func.isRequired,
-  setMode: PropTypes.func.isRequired,
-  setDominant: PropTypes.func.isRequired
+  setMode: PropTypes.func.isRequired
 }

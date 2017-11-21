@@ -30,13 +30,6 @@ export const setMode = (diminished, augmented) => {
   }
 }
 
-export const setDominant = (dominant) => {
-  return {
-    type: 'SET_DOMINANT',
-    dominant
-  }
-}
-
 // Options
 export const switchSymbolDisplay = (flat) => {
   return {
